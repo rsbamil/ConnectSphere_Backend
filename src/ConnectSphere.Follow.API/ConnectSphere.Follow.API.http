@@ -1,0 +1,6 @@
+@ConnectSphere.Follow.API_HostAddress = http://localhost:5093
+
+GET {{ConnectSphere.Follow.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

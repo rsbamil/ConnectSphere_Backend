@@ -1,0 +1,187 @@
+services:
+  # ── API GATEWAY (The Public Entry Point) ────────────────────────────────────
+  - type: web
+    name: cs-gateway
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    dockerCommand: "" # Uses ENTRYPOINT from Dockerfile
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Gateway
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Gateway
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ReverseProxy__Clusters__auth-cluster__Destinations__destination1__Address
+        value: http://cs-auth-service:8080
+      - key: ReverseProxy__Clusters__post-cluster__Destinations__destination1__Address
+        value: http://cs-post-service:8080
+      - key: ReverseProxy__Clusters__like-cluster__Destinations__destination1__Address
+        value: http://cs-like-service:8080
+      - key: ReverseProxy__Clusters__comment-cluster__Destinations__destination1__Address
+        value: http://cs-comment-service:8080
+      - key: ReverseProxy__Clusters__follow-cluster__Destinations__destination1__Address
+        value: http://cs-follow-service:8080
+      - key: ReverseProxy__Clusters__notif-cluster__Destinations__destination1__Address
+        value: http://cs-notif-service:8080
+      - key: ReverseProxy__Clusters__feed-cluster__Destinations__destination1__Address
+        value: http://cs-feed-service:8080
+
+  # ── AUTH SERVICE ────────────────────────────────────────────────────────────
+  - type: web
+    name: cs-auth-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Auth.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Auth.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false # Set this to your Neon DATABASE_URL
+      - key: JWT_SECRET
+        generateValue: true
+      - key: Google__ClientId
+        sync: false # Set from your .env
+
+  # ── POST SERVICE ────────────────────────────────────────────────────────────
+  - type: web
+    name: cs-post-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Post.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Post.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false # Set this to your Neon DATABASE_URL
+      - key: Redis__ConnectionString
+        sync: false # Set this to your Upstash REDIS_URL
+      - key: JWT_SECRET
+        sync: false
+
+  # ── LIKE SERVICE ────────────────────────────────────────────────────────────
+  - type: web
+    name: cs-like-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Like.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Like.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+  # ── COMMENT SERVICE ─────────────────────────────────────────────────────────
+  - type: web
+    name: cs-comment-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Comment.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Comment.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+  # ── FOLLOW SERVICE ──────────────────────────────────────────────────────────
+  - type: web
+    name: cs-follow-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Follow.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Follow.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+  # ── NOTIF SERVICE ───────────────────────────────────────────────────────────
+  - type: web
+    name: cs-notif-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Notif.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Notif.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+  # ── FEED SERVICE ────────────────────────────────────────────────────────────
+  - type: web
+    name: cs-feed-service
+    runtime: docker
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    buildArgs:
+      - PROJECT_NAME=ConnectSphere.Feed.API
+    plan: free
+    envVars:
+      - key: PROJECT_NAME
+        value: ConnectSphere.Feed.API
+      - key: ASPNETCORE_URLS
+        value: http://+:8080
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+  # ── FRONTEND (React Static Site) ────────────────────────────────────────────
+  - type: web
+    name: cs-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    rootDir: frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_GOOGLE_CLIENT_ID
+        sync: false # Set from your .env
+      # All services point directly to their respective Render URLs
+      - key: VITE_AUTH_URL
+        value: https://cs-auth-service.onrender.com
+      - key: VITE_POST_URL
+        value: https://cs-post-service.onrender.com
+      - key: VITE_LIKE_URL
+        value: https://cs-like-service.onrender.com
+      - key: VITE_COMMENT_URL
+        value: https://cs-comment-service.onrender.com
+      - key: VITE_FOLLOW_URL
+        value: https://cs-follow-service.onrender.com
+      - key: VITE_NOTIF_URL
+        value: https://cs-notif-service.onrender.com
+      - key: VITE_FEED_URL
+        value: https://cs-feed-service.onrender.com

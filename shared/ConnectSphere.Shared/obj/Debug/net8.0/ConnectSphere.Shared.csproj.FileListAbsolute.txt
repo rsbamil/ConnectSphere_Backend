@@ -1,0 +1,27 @@
+D:\ConnectSphere\src\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\ConnectSphere\src\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.AssemblyInfoInputs.cache
+D:\ConnectSphere\src\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.AssemblyInfo.cs
+D:\ConnectSphere\src\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.csproj.CoreCompileInputs.cache
+D:\ConnectSphere\Shared\ConnectSphere.Shared\bin\Debug\net8.0\ConnectSphere.Shared.deps.json
+D:\ConnectSphere\Shared\ConnectSphere.Shared\bin\Debug\net8.0\ConnectSphere.Shared.dll
+D:\ConnectSphere\Shared\ConnectSphere.Shared\bin\Debug\net8.0\ConnectSphere.Shared.pdb
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.AssemblyInfoInputs.cache
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.AssemblyInfo.cs
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.csproj.CoreCompileInputs.cache
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.dll
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\refint\ConnectSphere.Shared.dll
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.pdb
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ref\ConnectSphere.Shared.dll
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\bin\Debug\net8.0\ConnectSphere.Shared.deps.json
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\bin\Debug\net8.0\ConnectSphere.Shared.dll
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\bin\Debug\net8.0\ConnectSphere.Shared.pdb
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.AssemblyInfoInputs.cache
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.AssemblyInfo.cs
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.csproj.CoreCompileInputs.cache
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.dll
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\refint\ConnectSphere.Shared.dll
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.pdb
+D:\ConnectSphere - Copy\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ref\ConnectSphere.Shared.dll
+D:\ConnectSphere\Shared\ConnectSphere.Shared\obj\Debug\net8.0\ConnectSphere.Shared.sourcelink.json
